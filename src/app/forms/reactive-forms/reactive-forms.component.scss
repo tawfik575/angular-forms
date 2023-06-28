@@ -1,0 +1,48 @@
+.add-button {
+    width: 50px;
+    padding: 5px;
+}
+
+.control-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: var(--spacing-step);
+}
+
+.control-container {
+    display: flex;
+    align-items: center;
+}
+
+.phone-label-dropdown {
+    width: 110px;
+    margin-right: var(--spacing-step);
+}
+
+.ng-pending:not(form) {
+    outline: none;
+    border: 1px solid var(--color-info);
+}
+
+.ng-valid.ng-dirty:not([formGroupName]):not([formArrayName]):not([formArrayName]>div):not(select):not(form) {
+    outline: none;
+    border: 2px solid var(--color-success);
+}
+
+.ng-invalid.ng-dirty:not([formGroupName]):not([formArrayName]):not([formArrayName]>div):not(select):not(form) {
+    outline: none;
+    border: 2px solid var(--color-error);
+}
+
+.remove-button {
+    width: 50px;
+    margin: 0 0 0 10px;
+    color: var(--color-error);
+    background-color: transparent;
+    border-color: var(--color-error);
+}
+
+.skills-container {
+    display: flex;
+    align-items: center;
+}

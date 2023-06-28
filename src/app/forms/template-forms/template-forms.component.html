@@ -1,0 +1,82 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="form-field">
+        <label for="first-name">First Name</label>
+        <input #firstName="ngModel" [(ngModel)]="userInfo.firstName" required minlength="3"
+            [appBlacklistedWords]="isAdult" type="text" id="first-name" name="first-name"
+            placeholder="Enter your first name">
+        <app-input-error *ngIf="firstName.dirty" [errors]="firstName.errors"></app-input-error>
+    </div>
+    <div class="form-field">
+        <label for="last-name">Last Name</label>
+        <input #lastName="ngModel" [(ngModel)]="userInfo.lastName" required minlength="3"
+            [appBlacklistedWords]="isAdult" type="text" id="last-name" name="last-name"
+            placeholder="Enter your last name">
+        <app-input-error *ngIf="lastName.dirty" [errors]="lastName.errors"></app-input-error>
+    </div>
+    <div class="form-field">
+        <label for="nickname">Nickname</label>
+        <input #nickname="ngModel" [(ngModel)]="userInfo.nickname" required minlength="3" pattern="^[\w.]+$"
+            [appBlacklistedWords]="isAdult" appUniqueNickname type="text" id="nickname" name="nickname"
+            placeholder="Come up with a nickname">
+        <p *ngIf="nickname.pending" class="input-info">* Checking...</p>
+        <app-input-error *ngIf="nickname.dirty" [errors]="nickname.errors"></app-input-error>
+    </div>
+    <div class="form-field">
+        <label for="email">Email</label>
+        <input #email="ngModel" [(ngModel)]="userInfo.email" required email id="email" name="email"
+            placeholder="Provide your email">
+        <app-input-error *ngIf="email.dirty" [errors]="email.errors"></app-input-error>
+    </div>
+    <div class="form-field-inline-group">
+        <div class="form-field form-field--small">
+            <label for="year-of-birth">Year of Birth</label>
+            <select [(ngModel)]="userInfo.yearOfBirth" id="year-of-birth" name="year-of-birth">
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+            </select>
+        </div>
+        <div class="form-field form-field--small">
+            <label for="passport">Passport Number</label>
+            <input #passport="ngModel" [(ngModel)]="userInfo.passport" [required]="isAdult" pattern="^[\w.]+$"
+                [disabled]="!isAdult" type="text" id="passport" name="passport" placeholder="Provide passport data">
+            <app-input-error [errors]="passport.errors"></app-input-error>
+        </div>
+    </div>
+    <fieldset ngModelGroup="address">
+        <legend>Address</legend>
+        <div class="form-field">
+            <label for="full-address">Full Address</label>
+            <input #fullAddress="ngModel" [(ngModel)]="userInfo.fullAddress" required type="text" id="full-address"
+                name="full-address" placeholder="Street name and house number">
+            <app-input-error *ngIf="fullAddress.dirty" [errors]="fullAddress.errors"></app-input-error>
+        </div>
+        <div class="form-field">
+            <label for="city">City</label>
+            <input #city="ngModel" [(ngModel)]="userInfo.city" required type="text" id="city" name="city"
+                placeholder="City">
+            <app-input-error *ngIf="city.dirty" [errors]="city.errors"></app-input-error>
+        </div>
+        <div class="form-field">
+            <label for="post-code">Post Code</label>
+            <input #postCode="ngModel" [(ngModel)]="userInfo.postCode" required minlength="5" pattern="^[1-9][0-9]*$"
+                maxlength="5" type="text" id="post-code" name="post-code" placeholder="Post code">
+            <app-input-error *ngIf="postCode.dirty" [errors]="postCode.errors"></app-input-error>
+        </div>
+    </fieldset>
+    <fieldset ngModelGroup="password-field" appPasswordMatch>
+        <legend>Password</legend>
+        <div class="form-field">
+            <label for="password">Password</label>
+            <input #password="ngModel" [(ngModel)]="userInfo.password" required minlength="7" type="password"
+                id="password" name="password" placeholder="Enter a valid password">
+            <app-input-error *ngIf="password.dirty" [errors]="password.errors"></app-input-error>
+        </div>
+        <div class="form-field">
+            <label for="confirm-password">Confirm Password</label>
+            <input #confirmPassword="ngModel" ngModel required type="password" id="confirm-password"
+                name="confirm-password" placeholder="Confirm your password">
+            <app-input-error *ngIf="confirmPassword.dirty" [errors]="confirmPassword.errors"></app-input-error>
+        </div>
+    </fieldset>
+    <button type="submit" [disabled]="f.invalid || f.pending">Save</button>
+    <button (click)="onReset()" [disabled]="f.pristine" type="button" class="reset-button">Reset</button>
+</form>

@@ -1,0 +1,14 @@
+.ng-pending:not(form) {
+    outline: none;
+    border: 2px solid var(--color-info);
+}
+
+.ng-invalid.ng-dirty:not([ngModelGroup]):not(form) {
+    outline: none;
+    border: 2px solid var(--color-error);
+}
+
+.ng-valid.ng-dirty:not([ngModelGroup]):not(select):not(form) {
+    outline: none;
+    border: 2px solid var(--color-success);
+}

@@ -1,0 +1,17 @@
+.form {
+    min-width: 395px;
+}
+
+.form-field {
+    width: 100%;
+    min-height: 5.3125rem;
+
+    &--small {
+        max-width: 48%;
+    }
+}
+
+.form-field-inline-group {
+    display: flex;
+    justify-content: space-between;
+}
