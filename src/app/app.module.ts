@@ -15,6 +15,7 @@ import { UniqueNicknameDirective } from './forms/template-forms/validators/async
 import { PasswordMatchDirective } from './forms/template-forms/validators/cross-field-validators/password-match.directive';
 import { BlacklistedWordsDirective } from './forms/template-forms/validators/blacklist-validators/blacklisted-words.directive';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
