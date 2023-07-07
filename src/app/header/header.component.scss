@@ -1,20 +1,11 @@
-:host {
-    display: block;
-}
-
-.header {
-    display: flex;
-    padding: 5px 15px;
-    align-items: center;
-    box-sizing: border-box;
-    height: var(--height-header);
-    background-color: var(--color-primary);
-}
-
 .logo {
     width: 140px;
     cursor: pointer;
     margin-right: 3.5rem;
+}
+
+.mat-elevation-z8 {
+    background-color: var(--color-primary);
 }
 
 .nav-link {
@@ -29,8 +20,4 @@
     &.active {
         border: 1px solid white;
     }
-}
-
-.nav {
-    display: flex;
 }
